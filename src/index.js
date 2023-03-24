@@ -11,6 +11,7 @@ import App from './App';
 import Menu from './components/Menu';
 import CreateOrderForm from './components/CreateOrderForm';
 import EditOrderForm from './components/EditOrderForm';
+import CustomersList from './components/CustomersList';
 
 import reportWebVitals from './reportWebVitals';
 import OrdersTable from './components/OrdersTable';
@@ -32,6 +33,9 @@ const router = createBrowserRouter([
       }, {
         path: 'orders',
         element: <OrdersTable />
+      }, {
+        path: 'customers',
+        element: <CustomersList />
       }
     ]
   },

@@ -1,6 +1,8 @@
 import '../styles/view_order.css';
+import { Link } from 'react-router-dom';
 
 function ViewOrder() {
+    const order = { id: 1 };
     return (
         <div className="receipt">
             <div className="logo">
@@ -106,7 +108,7 @@ function ViewOrder() {
             <br /><br />
             <div className="row">
                 <div className="col">
-                    <button className="btn btn-warning"><a href="{% url 'inventory:edit' order.pk %}">Edit</a></button>
+                    <button className="btn btn-warning"><Link to={"/orders/edit/" + order.id}>Edit</Link></button>
                     <button className="btn btn-secondary" id="print">Print</button>
                     <button className="btn btn-success" id="mark-paid">Mark as Paid</button>
                     <button className="btn btn-success" id="mark-claimed">Mark as Claimed</button>

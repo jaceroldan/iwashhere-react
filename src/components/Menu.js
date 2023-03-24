@@ -1,14 +1,23 @@
 import '../styles/menu.css';
+import { Link } from 'react-router-dom';
 
 function Menu() {
     return (
-        <div class="main-menu">
-            <div class="main-menu-options">
+        <div className="main-menu">
+            <div className="main-menu-options">
                 <ul>
-                    <a href="{% url 'inventory:new' %}"><li>New Order</li></a>
-                    <a href="{% url 'inventory:list-orders' %}"><li>All Orders</li></a>
-                    <a href="{% url 'inventory:list-customers' %}"><li>Customers</li></a>
-                    <a href="{% url 'inventory:list-orders-unclaimed' %}"><li>To Claim</li></a>
+                    <li>
+                        <Link to="orders/new">New Order</Link>
+                    </li>
+                    <li>
+                        <Link to="orders">All Orders</Link>
+                    </li>
+                    <li>
+                        <Link to="customers">Customers</Link>
+                    </li>
+                    <li>
+                        <Link to="orders/?unclaimed=true">To Claim</Link>
+                    </li>
                 </ul>
             </div>
         </div>

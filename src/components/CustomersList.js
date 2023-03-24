@@ -2,7 +2,7 @@ import '../styles/customers_list.css';
 
 function CustomersList() {
     return (
-        <div class="container container-fluid">
+        <div class="data-table container container-fluid">
             <h1>Customers Masterlist</h1>
             <table class="table table-bordered">
                 <thead>
