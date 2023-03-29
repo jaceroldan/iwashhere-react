@@ -1,6 +1,20 @@
 import '../styles/orders_table.css';
 
+import { useEffect, useState } from 'react';
+import { getAllOrders } from '../services/OrdersService';
+
 function OrdersTable() {
+    const [orders, setOrders] = useState([]);
+
+    useEffect(() => {
+        handleOrders();
+    }, [orders]);
+
+    const handleOrders = async () => {
+        const result = await getAllOrders();
+        setOrders(result.results);  
+    };
+
     return (
         <div className="data-table container container-fluid">
             <div className="row" style={{ display: 'flex', flexDirection: 'row' }}>
@@ -42,30 +56,28 @@ function OrdersTable() {
                         <th>Actions</th>
                     </tr>
                 </thead>
-                {/* TODO: Dynamic data */}
                 <tbody>
-                    <tr>
-                        {/* <td>{{ order.pk }}</td>
-                        <td>{{ order.date_created }}</td>
-                        <td>{{ order.customer }}</td>
-                        <td>{{ order.weight }}</td>
-                        <td>{{ order.service_cost }}</td>
-                        <td>{{ order.detergent_cost }}</td>
-                        <td>{{ order.fabcon_cost }}</td>
-                        <td>{{ order.bleach_cost }}</td>
-                        <td>{{ order.plastic_cost }}</td>
-                        <td>{{ order.total_cost }}</td>
-                        <td>{{ order.remarks }}</td>
-                        <td>{{ order.date_required|date:"N d, Y" }}</td>
-                        <td>{{ order.date_required|time:"h:i" }}</td>
-                        <td>{{ order.date_claimed|date:"N d, Y" }}</td>
-                        <td>{{ order.date_claimed|time:"h:i" }}</td>
-                        <td>{{ order.payment_made }}</td>
-                        <td><button className="btn btn-primary" ><a href="{% url 'inventory:view' order.pk %} ">Open</a></button></td> */}
-                        <script>
-
-                        </script>
-                    </tr>
+                    {orders?.map((order) => (
+                        <tr>
+                            <td>{ order.pk }</td>
+                            <td>{ order.date_created }</td>
+                            <td>{ order.customer.first_name + order.customer.last_name }</td>
+                            <td>{ order.weight }</td>
+                            <td>{ order.service_cost }</td>
+                            <td>{ order.detergent_cost }</td>
+                            <td>{ order.fabcon_cost }</td>
+                            <td>{ order.bleach_cost }</td>
+                            <td>{ order.plastic_cost }</td>
+                            <td>{ order.total_cost }</td>
+                            <td>{ order.remarks }</td>
+                            <td>{ order.date_required }</td>
+                            <td>{ order.date_required }</td>
+                            <td>{ order.date_claimed }</td>
+                            <td>{ order.date_claimed }</td>
+                            <td>{ order.payment_made }</td>
+                            <td><button className="btn btn-primary" ><a href="{% url 'inventory:view' order.pk %} ">Open</a></button></td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
             <nav aria-label="Orders navigation">
