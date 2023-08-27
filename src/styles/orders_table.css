@@ -5,3 +5,8 @@
 .data-table {
     margin-top: 100px;    
 }
+
+a > button.btn-success {
+    color: white;
+    text-decoration: none;
+}

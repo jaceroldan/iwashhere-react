@@ -1,5 +1,6 @@
 import '../styles/orders_table.css';
 
+import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getAllOrders } from '../services/OrdersService';
 
@@ -7,7 +8,10 @@ function OrdersTable() {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        handleOrders();
+        window.addEventListener('load', handleOrders);
+        return () => {
+            window.removeEventListener('load', handleOrders);
+        }
     }, [orders]);
 
     const handleOrders = async () => {
@@ -22,7 +26,11 @@ function OrdersTable() {
                     <h1>Orders Masterlist</h1>
                 </div>
                 <div className="col-sm-1">
-                    <button className="btn btn-success" id="create">Create</button>
+                    <Link to="new">
+                        <button className="btn btn-success" id="create">
+                            Create
+                        </button>
+                    </Link>
                 </div>
                 <div className="col-sm-3">
                     <div className="form-inline my-2 my-lg-0" style={{ display: 'flex', flexDirection: 'row' }}>

@@ -10,3 +10,7 @@ export async function getAllOrders() {
     return response.data;
 };
 
+export async function createOrder(data) {
+    const response = await axios.post(ordersAPI, data);
+    return response.data;
+};
